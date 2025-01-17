@@ -1,22 +1,42 @@
+import { useState } from "react"
 import { data } from "./db/data"
 export default function Form() {
+
+    const [activity, setActivity] = useState({
+        category : 1,
+        name : "",
+        calories : 0
+    })
+    const handleChange = (e) => {
+        setActivity({
+            ...activity,
+            [e.target.id] : [e.target.value]
+        })
+    }
   return (
     <form action="" className="bg-white rounded-lg space-y-5 shadow p-10">
         <div className="grid grid-cols-1 gap-3">
             <label htmlFor="category" className="font-bold">Categoria</label>
-            <select id="category" className="border border-slate-300 p-2 rounded-lg w-full bg-white">
+            <select
+            id="category" 
+            className="border border-slate-300 p-2 rounded-lg w-full bg-white"
+            value={activity.category}
+            onChange={handleChange}
+            >
                 {data.map(category => (
                     <option key={category.id} value={category.id}>{category.name}</option>
                 ))}
             </select>
         </div>
         <div className="grid grid-cols-1 gap-3">
-            <label htmlFor="activity" className="font-bold">Actividad</label>
+            <label htmlFor="name" className="font-bold">Actividad</label>
             <input 
                 type="text" 
-                id="activity"
+                id="name"
                 placeholder="Ej. Correr, Ejercicio, Comer Frutas, Almorzar.."
                 className="border border-slate-300 rounded-lg p-2 bg-white w-full"
+                value={activity.name}
+                onChange={handleChange}
                />
         </div>
         <div className="grid grid-cols-1 gap-3">
@@ -26,6 +46,8 @@ export default function Form() {
                 id="calories"
                 placeholder="Calorias Ej. 300, 500"
                 className="border border-slate-300 rounded-lg p-2 bg-white w-full"
+                value={activity.calories}
+                onChange={handleChange}
                />
         </div>
         <input 
