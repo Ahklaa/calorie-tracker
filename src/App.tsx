@@ -2,7 +2,7 @@ import { useReducer } from 'react'
 import Form from './components/Form'
 import { activityReduce,initialState } from './reducers/activity-reducer'
 function App() {
-
+  
     const [state,dispatch] = useReducer(activityReduce,initialState)
 
   return (
