@@ -1,3 +1,4 @@
+import { act } from "react"
 import type { Activity } from "../components/types"
 export type ActivityAction = 
 {
@@ -18,7 +19,10 @@ export const activityReduce = (
 ) => {
     if (action.type === "save-activity"){
         //este codigo maneja la logica paa actualizar el state
-        console.log("desde el type save-activity");
+        return{
+            ...state,
+            activity : [...state.activity, action.payload.newActivity]
+        }
     }
     return state
 }
