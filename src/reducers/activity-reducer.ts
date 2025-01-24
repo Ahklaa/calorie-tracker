@@ -7,7 +7,7 @@ export type ActivityAction =
     type : 'set-activeId', payload : {id : Activity['id']}
 }
 
-type ActivityState = {
+export type ActivityState = {
     activity : Activity[],
     activeId : Activity['id']
 }
