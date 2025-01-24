@@ -22,6 +22,7 @@ export default function Form({dispatch, state} : FormProps) {
             setActivity(selectedActivity)
         }
     },[state])
+    
     const handleChange = (e : ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => {
         const isNumberField = ['category','calories'].includes(e.target.id) 
         
