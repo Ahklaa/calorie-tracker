@@ -11,12 +11,16 @@ export type ActivityAction =
     type : 'delete-activity', payload : {id : Activity['id']}
 }
 
+const localStorageActivities = () : Activity[] => {
+    const activities = localStorage.getItem('activities')
+    return activities ? JSON.parse(activities) : []
+}
 export type ActivityState = {
     activity : Activity[],
     activeId : Activity['id']
 }
 export const initialState : ActivityState = {
-    activity : [],
+    activity : localStorageActivities(),
     activeId : ""
 }
 
