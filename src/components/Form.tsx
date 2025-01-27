@@ -16,13 +16,14 @@ const initialState = {
 }
 export default function Form({dispatch, state} : FormProps) {
     const [activity, setActivity] = useState<Activity>(initialState)
+    
     useEffect(()=> {
         if(state.activeId){
             const selectedActivity = state.activity.filter(stateActivity => stateActivity.id === state.activeId)[0]
             setActivity(selectedActivity)
         }
     },[state])
-    
+
     const handleChange = (e : ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => {
         const isNumberField = ['category','calories'].includes(e.target.id) 
         
