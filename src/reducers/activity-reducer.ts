@@ -10,6 +10,10 @@ export type ActivityAction =
 {
     type : 'delete-activity', payload : {id : Activity['id']}
 }
+|
+{
+    type : 'restart-activities'
+}
 
 const localStorageActivities = () : Activity[] => {
     const activities = localStorage.getItem('activities')
@@ -52,6 +56,12 @@ export const activityReduce = (
         return {
             ...state,
             activity : state.activity.filter(activity => activity.id !== action.payload.id)
+        }
+    }
+    if(action.type === "restart-activities"){
+        return{
+            activity : [],
+            activeId : ""
         }
     }
     return state
